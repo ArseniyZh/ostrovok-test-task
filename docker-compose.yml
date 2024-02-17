@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  backend:
+    container_name: backend
+    build:
+      context: ./ostrovok/
+      dockerfile: Dockerfile
+    volumes:
+      - ./ostrovok/static/:/usr/src/ostrovok/static
+    command: gunicorn ostrovok.wsgi:application --bind 0.0.0.0:8811
+    ports:
+      - 8811:8811
+    networks:
+      - backend
+    env_file:
+      - ./.env
+    depends_on:
+      - ostrovok_db
+
+  ostrovok_db:
+    image: postgres:13.0-alpine
+    env_file: .env
+    networks:
+      - backend
+    environment:
+      POSTGRES_DB: $DB_NAME
+      POSTGRES_USER: $DB_USER
+      POSTGRES_PASSWORD: $DB_PASS
+    ports:
+      - "5432:5432"
+
+  nginx:
+    build:
+      context: ./ostrovok/
+      dockerfile: Dockerfile.nginx
+    ports:
+      - "8012:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+  logs:
+
+networks:
+  backend:
+    driver: bridge

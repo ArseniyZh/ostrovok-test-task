@@ -1,0 +1,6 @@
+FROM nginx:latest
+
+COPY nginx.conf /etc/ostrovok/conf.d
+
+WORKDIR /usr/src/ostrovok
+COPY . .;
