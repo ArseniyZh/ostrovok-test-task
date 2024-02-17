@@ -1,9 +1,9 @@
 # ostrovok-test-task
 
 <h3>Проект задеплоен</h3>
-<a target="_blank" href="http://95.163.231.52:8811/sign_up/">Регистрация</a> <br>
-<a target="_blank" href="http://95.163.231.52:8811/swagger/">Сваггер</a> <br>
-<a target="_blank" href="http://95.163.231.52:8012/">Nginx</a> <br>
+<a href="http://95.163.231.52:8811/sign_up/" target="_blank">Регистрация</a> <br>
+<a href="http://95.163.231.52:8811/swagger/" target="_blank">Сваггер</a> <br>
+<a href="http://95.163.231.52:8012/" target="_blank">Nginx</a> <br>
 
 - После регистрации сразу попадаем в админку
 - Нужный эндпоинт в сваггере - <code>hotel_list</code>
